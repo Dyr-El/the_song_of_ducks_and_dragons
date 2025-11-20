@@ -1,0 +1,80 @@
+inp = """634
+816
+585
+600
+321
+596
+896
+667
+779
+956
+677
+504
+697
+403
+349
+785
+769
+698
+368
+901
+789
+840
+320
+357
+474
+711
+736
+358
+290
+388
+176
+284
+937
+423
+113
+519
+408
+786
+372
+508
+414
+845
+328
+590
+427
+722
+943
+573
+207
+306"""
+test_inp = """72
+58
+47
+61
+67"""
+
+
+def create_wheel(inp):
+    numbers = list(map(int, inp.split()))
+    wheel = [1]
+    for idx, number in enumerate(numbers):
+        if idx % 2 == 0:
+            wheel.append(number)
+        else:
+            wheel = [number] + wheel
+    return wheel
+
+def turn_wheel(inp, steps):
+    wheel = create_wheel(inp)
+    pos = wheel.index(1)
+    return wheel[(pos + steps) % len(wheel)]
+
+
+def main():
+    print(f"Wheel setting (examples): {turn_wheel(test_inp, 2025)}")
+    print(f"Wheel setting (actual): {turn_wheel(inp, 2025)}")
+
+    
+if __name__ == "__main__":
+    main()
